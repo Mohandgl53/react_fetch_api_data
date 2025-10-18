@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import apiRequest from './apiRequest';
 
 function App() {
-  const API_URL = 'http://localhost:3500/items';
+  const API_URL = 'http://localhost:3600/items';
 
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState('');
@@ -36,7 +36,7 @@ function App() {
   }, [])
 
   const addItem = async (item) => {
-    const id = items.length ? items[items.length - 1].id + 1 : 1;
+    const id = items.length ? String(Number(items[items.length - 1].id) + 1) : 1;
     const myNewItem = { id, checked: false, item };
     const listItems = [...items, myNewItem];
     setItems(listItems);
